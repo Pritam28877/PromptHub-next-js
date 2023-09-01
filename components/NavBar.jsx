@@ -5,6 +5,9 @@ import { useState } from "react";
 
 const NavBar = () => {
   const [isUserLoggedIN, setIsUserLoggedIN] = useState(true);
+  const singOut = ()=>{
+
+  }
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
@@ -17,7 +20,7 @@ const NavBar = () => {
         />
         <p className="logo_text">PromptHub</p>
       </Link>
-      {/* Mobile Navigation */}
+      {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {isUserLoggedIN ? (
           <div className="flex gap-3 md:gap-5">
@@ -25,6 +28,11 @@ const NavBar = () => {
               {" "}
               Create Post
             </Link>
+            <button
+              type="button"
+              onClick={singOut}
+              className="outline_btn"
+            >SingOut</button>
           </div>
         ) : (
           <></>
