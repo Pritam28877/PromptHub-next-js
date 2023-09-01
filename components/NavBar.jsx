@@ -1,9 +1,8 @@
-import React from 'react'
+import Link from "next/link";
+import Image from "next/image";
 
 const NavBar = () => {
-  return (
-    <div>NavBar</div>
-  )
-}
+  return <div>NavBar</div>;
+};
 
-export default NavBar
+export default NavBar;
