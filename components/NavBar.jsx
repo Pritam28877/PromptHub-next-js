@@ -1,13 +1,23 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const NavBar = () => {
   const [isUserLoggedIN, setIsUserLoggedIN] = useState(true);
-  const singOut = ()=>{
+  const [providers, setProviders] = useState(null);
 
-  }
+  useEffect(() => {
+    const setProvider = async () => {
+      const response = await getProviders();
+      console.log(response);
+      setProviders(response);
+    };
+
+    setProvider();
+  }, []);
+  const singOut = () => {};
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
@@ -28,14 +38,24 @@ const NavBar = () => {
               {" "}
               Create Post
             </Link>
-            <button
-              type="button"
-              onClick={singOut}
-              className="outline_btn"
-            >SingOut</button>
+            <button type="button" onClick={singOut} className="outline_btn">
+              signOut
+            </button>
           </div>
         ) : (
-          <></>
+          <>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  signIn
+                </button>
+              ))}
+          </>
         )}
       </div>
     </nav>
