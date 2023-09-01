@@ -41,6 +41,15 @@ const NavBar = () => {
             <button type="button" onClick={singOut} className="outline_btn">
               signOut
             </button>
+            <Link href="/profile">
+              <Image
+                src="assets/images/logo.svg"
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="profile"
+              />
+            </Link>
           </div>
         ) : (
           <>
