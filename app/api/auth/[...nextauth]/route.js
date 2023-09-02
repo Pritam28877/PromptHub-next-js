@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { connectoDB } from "@utils/db";
 
 const handlerAuth = NextAuth({
   providers: [
@@ -8,14 +9,14 @@ const handlerAuth = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  async session({session}){
-
-  },
-  async signIn({profile}){
+  async session({ session }) {},
+  async signIn({ profile }) {
     try {
-      
-    } catch (error) {
-      
-    }
-  }
+      await connectoDB();
+
+      //* if some use is already exists
+
+      //*if not , create a new user 
+    } catch (error) {}
+  },
 });
