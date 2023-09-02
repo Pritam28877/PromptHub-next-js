@@ -11,7 +11,7 @@ const NavBar = () => {
   const { data: session } = useSession();
 
   {
-    console.log(session);
+    console.log(session?.user?.image);
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const NavBar = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="assets/images/logo.svg"
+                src={session?.user?.image}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -75,10 +75,10 @@ const NavBar = () => {
       </div>
       {/* Mobile navigation  */}
       <div className="sm:hidden flex relative">
-        {session?.user  ? (
+        {session?.user ? (
           <div className="flex">
             <Image
-              src="assets/images/logo.svg"
+              src={session?.user?.image}
               width={37}
               height={37}
               className="rounded-full"
