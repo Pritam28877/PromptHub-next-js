@@ -3,10 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { set } from "mongoose";
 
 const NavBar = () => {
   const [isUserLoggedIN, setIsUserLoggedIN] = useState(true);
   const [providers, setProviders] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     const setProvider = async () => {
@@ -77,8 +79,34 @@ const NavBar = () => {
               height={37}
               className="rounded-full"
               alt="profile"
-              onClick={() => {}}
+              onClick={() => setToggle((prev) => !prev)}
             />
+            {toggle && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_Link"
+                  onClick={() => setToggle(false)}
+                >
+                  MYProfile
+                </Link>
+                <Link
+                  href="/create-prompt"
+                  className="dropdown_Link"
+                  onClick={() => setToggle(false)}
+                >
+                  CreatePrompt
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setToggle(false);
+                    signOut();
+                  }}
+                  className="mt-5 w-full black_btn "
+                >signOut</button>
+              </div>
+            )}
           </div>
         ) : (
           <>
