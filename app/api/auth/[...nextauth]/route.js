@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connectoDB } from "@utils/db";
+import User from "@models/user";
 
 const handlerAuth = NextAuth({
   providers: [
@@ -9,14 +10,35 @@ const handlerAuth = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  async session({ session }) {},
-  async signIn({ profile }) {
-    try {
-      await connectoDB();
+  callbacks: {
+    async session({ session }) {
+      const sessionUser = await User.findOne({ email: session.user.email });
+      session.user.id = sessionUser._id.toString();
 
-      //* if some use is already exists
+      return session;
+    },
+    async signIn({ profile }) {
+      try {
+        await connectoDB();
 
-      //*if not , create a new user 
-    } catch (error) {}
+        //* if some use is already exists
+        const userExists = await User.findOne({
+          email: profile.email,
+        });
+
+        //*if not , create a new user
+        if (!userExists) {
+          await User.create({
+            email: profile.email,
+            username: profile.name.replace(" ", "").toLowerCase(),
+            image: profile.picture,
+          });
+        }
+      } catch (error) {
+        console.log("Error checking if user exists: ", error.message);
+        return false;
+      }
+    },
   },
 });
+export { handlerAuth as GET, handlerAuth as POST };
