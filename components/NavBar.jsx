@@ -3,12 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import { set } from "mongoose";
 
 const NavBar = () => {
   const [isUserLoggedIN, setIsUserLoggedIN] = useState(true);
   const [providers, setProviders] = useState(null);
   const [toggle, setToggle] = useState(false);
+  const { data: session } = useSession();
+
+  {
+    console.log(session);
+  }
 
   useEffect(() => {
     const setProvider = async () => {
@@ -34,7 +38,7 @@ const NavBar = () => {
       </Link>
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
-        {isUserLoggedIN ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               {" "}
@@ -71,7 +75,7 @@ const NavBar = () => {
       </div>
       {/* Mobile navigation  */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIN ? (
+        {session?.user  ? (
           <div className="flex">
             <Image
               src="assets/images/logo.svg"
@@ -104,7 +108,9 @@ const NavBar = () => {
                     signOut();
                   }}
                   className="mt-5 w-full black_btn "
-                >signOut</button>
+                >
+                  signOut
+                </button>
               </div>
             )}
           </div>
