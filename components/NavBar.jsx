@@ -11,13 +11,13 @@ const NavBar = () => {
   const { data: session } = useSession();
 
   {
-    console.log(session?.user?.image);
+    // console.log(session);
   }
 
   useEffect(() => {
     const setProvider = async () => {
       const response = await getProviders();
-      console.log(response);
+      // console.log(response);
       setProviders(response);
     };
 
