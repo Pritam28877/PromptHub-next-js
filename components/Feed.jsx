@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
+import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
+
+  const handleSearchChange = () => {};
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
