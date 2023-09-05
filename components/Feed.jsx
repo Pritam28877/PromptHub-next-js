@@ -29,7 +29,6 @@ const Feed = () => {
   const fetchPosts = async () => {
     const response = await fetch("/api/prompt");
     const data = await response.json();
-    console.log(data);
 
     setAllPosts(data);
   };
@@ -47,9 +46,7 @@ const Feed = () => {
         regex.test(item.prompt)
     );
   };
-  {
-    console.log(allPosts);
-  }
+
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
