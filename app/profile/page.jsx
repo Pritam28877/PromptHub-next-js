@@ -20,9 +20,18 @@ const ProfilePage = () => {
     if (session?.user.id) fetchPosts();
   }, [session?.user.id]);
 
+  const handleEdit = (post) => {
+    router.push(`/update-prompt?id=${post._id}`);
+  };
   return (
     <>
-      <Profile />
+      <Profile
+        name="My"
+        desc="Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination"
+        data={myPosts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </>
   );
 };
