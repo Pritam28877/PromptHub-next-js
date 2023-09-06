@@ -1,34 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prompt App Readme
 
-## Getting Started
+**Prompt App** is a private project with a focus on creating a web application using Next.js, MongoDB, and NextAuth.js. This repository contains the codebase for the project and its associated scripts. Below, you'll find information on how to set up and run the project locally.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Before you start, ensure that you have Node.js and npm (Node Package Manager) installed on your system.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repository to your local machine:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   ```bash
+   git clone https://github.com/your-username/prompt-app.git
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Change into the project directory:
 
-## Learn More
+   ```bash
+   cd prompt-app
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Install project dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+This project includes several scripts to help you with development, building, starting the application, and linting. You can run these scripts using npm:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Development mode:** Start the development server with hot-reloading.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  ```bash
+  npm run dev
+  ```
+
+- **Building the application:** Generate a production-ready build of the application.
+
+  ```bash
+  npm run build
+  ```
+
+- **Starting the application:** Start the application in production mode after building it.
+
+  ```bash
+  npm start
+  ```
+
+- **Linting:** Check the code for linting errors.
+
+  ```bash
+  npm run lint
+  ```
+
+## Dependencies
+
+This project relies on the following dependencies:
+
+- `autoprefixer`: 10.4.15
+- `bcrypt`: ^5.1.1
+- `mongodb`: ^6.0.0
+- `mongoose`: ^7.5.0
+- `next`: 13.4.19
+- `next-auth`: ^4.23.1
+- `postcss`: 8.4.29
+- `react`: 18.2.0
+- `react-dom`: 18.2.0
+- `tailwindcss`: 3.3.3
+
+Please refer to the documentation of each dependency for more information on how they are used within the project.
+
+## Version
+
+- **Prompt App Version:** 0.1.0
+- **Private:** true
+
+## License
+
+This project is private and does not have an open-source license.
+
+---
+
+Feel free to reach out to the project owner or contributors for any further information or assistance. Enjoy working with Prompt App!
