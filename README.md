@@ -1,3 +1,5 @@
+![image](https://github.com/Pritam28877/PromptHub-next-js/assets/92548589/e3b71860-ea3c-4ce6-a138-7c021e68219d)
+
 # Prompt App Readme
 
 **Prompt App** is a private project with a focus on creating a web application using Next.js, MongoDB, and NextAuth.js. This repository contains the codebase for the project and its associated scripts. Below, you'll find information on how to set up and run the project locally.
